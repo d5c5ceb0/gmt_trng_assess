@@ -19,6 +19,7 @@ N=n//M >=200
 import math
 import scipy.special as ss
 from berlekamp_massey import *
+import time
 
 pi = [0.010417,0.03125,0.125,0.5,0.25,0.0625,0.020833]
 
@@ -37,36 +38,20 @@ def linear_complexity_test(bits, m, a):
     n = len(bits)
     N = n//m
 
-    L = list()
-    for i in range(N):
-        L.append(berlekamp_massey_algorithm(bits[i*m:(i+1)*m], m))
-
+    L = [berlekamp_massey_algorithm(bits[i*m:(i+1)*m], m) for i in range(N)]
     mu = m/2 + (9+(-1)**(m+1))/36 - (m/3+2/9)/(2**m)
-
-    T = list()
-    for i in range(N):
-        T.append((-1)**m * (L[i]-mu) + 2/9)
+    T = [(-1)**m * (L[i]-mu) + 2/9 for i in range(N)]
     
     v = [0]*7
-    for t in T:
-        if t <= -2.5:
-            v[0] += 1
-        elif t <= -1.5:
-            v[1] += 1
-        elif t <= -0.5:
-            v[2] += 1
-        elif t <= 0.5:
-            v[3] += 1
-        elif t <= 1.5:
-            v[4] += 1
-        elif t <= 2.5:
-            v[5] += 1
-        else:
-            v[6] += 1
+    v[0] = len([v for v in T if v <= -2.5])
+    v[1] = len([v for v in T if v <= -1.5 and v > -2.5])
+    v[2] = len([v for v in T if v <= -0.5 and v > -1.5])
+    v[3] = len([v for v in T if v <= 0.5 and v > -0.5])
+    v[4] = len([v for v in T if v <= 1.5 and v > 0.5])
+    v[5] = len([v for v in T if v <= 2.5 and v > 1.5])
+    v[6] = len([v for v in T if v > 2.5  ])
 
-    V = 0
-    for i in range(7):
-        V += (v[i] - N*pi[i])**2/(N*pi[i])
+    V = sum((v[i] - N*pi[i])**2/(N*pi[i]) for i in range(7))
 
     p_value =  ss.gammaincc(3, V/2)
 
@@ -92,5 +77,7 @@ if __name__ == '__main__':
 
     strs = file_to_bytes("./data/data.sha1")
     bits = bytes_to_base2string(strs)
+    print(time.time())
     ret = linear_complexity_test(bits, 500, 0.01)
+    print(time.time())
     linear_complexity_logs(*ret)
