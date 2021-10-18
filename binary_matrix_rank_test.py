@@ -34,23 +34,13 @@ def binary_matrix_rank_test(bits, M, Q, a):
     n = len(bits)
     MQ = M * Q
     N = n//MQ
-    
-    FM = 0
-    FM1 = 0
-    F = 0
-    for i in range(N):
-        blist = list(bits[i*MQ : (i+1)*MQ])
-        barr = create_matrix(M, Q, [int(v) for v in blist])
-        R = computeRank(M, Q, barr)
-        if R == M:
-            FM += 1
-        elif R == (M-1):
-            FM1 += 1
-        else:
-            F += 1
+
+    Rlist = [rank(M, Q, [int(v) for v in list(bits[i*MQ:(i+1)*MQ])]) for i in range(N)]
+    FM = len([v for v in Rlist if v == M])
+    FM1 = len([v for v in Rlist if v == (M-1)])
 
 
-    V = (FM-0.2888*N)**2/(0.2888*N) + (FM1-0.5776*N)**2/(0.5776*N) + (F-0.1336*N)**2/(0.1336*N)
+    V = (FM-0.2888*N)**2/(0.2888*N) + (FM1-0.5776*N)**2/(0.5776*N) + (N-FM-FM1-0.1336*N)**2/(0.1336*N)
 
     p_value = sc.gammaincc(1, V/2)
 

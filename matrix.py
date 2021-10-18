@@ -87,6 +87,10 @@ def create_matrix(M, Q, input):
         m.append(row)
     return m
 
+def rank(M, Q, input):
+    m = create_matrix(M, Q, input)
+    return computeRank(M, Q, m)
+
 
 if __name__ == '__main__':
     m = create_matrix(3, 3, [int(v) for v in '011101110'])
