@@ -1,0 +1,118 @@
+{
+	"num_of_bits_per_stream" : 1000000,
+	"num_of_streams" : 1000,
+	"threshold" : 980,
+	"monobit_frequency_test" : [
+		{
+			"a" : 0.01
+		}
+	],
+	"frequency_test_within_a_block_test" : [
+		{
+			"m" : 100,
+			"a" : 0.01
+		}
+	],
+	"poker_test" : [
+		{
+			"m" : 4,
+			"a" : 0.01
+		}, 
+		{
+			"m" : 8,
+			"a" : 0.01
+		}
+	],
+	"serial_test": [
+		{
+			"m" : 2,
+			"a" : 0.01
+		},
+		{
+			"m" : 5,
+			"a" : 0.01
+		}
+	],
+	"runs_test": [
+		{
+			"a" : 0.01
+		}
+	],
+	"runs_distribution_test" : [
+		{
+			"a" : 0.01
+		}
+	],
+	"longest_run_of_ones_in_a_block_test" : [
+		{
+			"m" : 10000,
+			"a" : 0.01
+		}
+	],
+	"binary_derivative_test" : [
+		{
+			"k" : 3,
+			"a" : 0.01
+		},
+		{
+			"k" : 7,
+			"a" : 0.01
+		}
+	],
+	"autocorrelation_test" : [
+		{
+			"d" : 1,
+			"a" : 0.01
+		},
+		{
+			"d" : 2,
+			"a" : 0.01
+		},
+		{
+			"d" : 8,
+			"a" : 0.01
+		},
+		{
+			"d" : 16,
+			"a" : 0.01
+		}
+	],
+	"binary_matrix_rank_test" : [
+		{
+			"M" : 32,
+			"Q" : 32,
+			"a" : 0.01
+		}
+	],
+	"cumulative_sums_test" : [
+		{
+			"a" : 0.01
+		}
+	],
+	"approximate_entropy_test" : [
+		{
+			"m" : 2,
+			"a" : 0.01
+		},
+		{
+			"m" : 5,
+			"a" : 0.01
+		}
+	],
+	"linear_complexity_test" : [
+		{
+			"m" : 500,
+			"a" : 0.01
+		}
+	],
+	"maurer_universal_statistical_test" : [
+		{
+			"a" : 0.01
+		}
+	], 
+	"discrete_fourier_transform_test" : [
+		{
+			"a" : 0.01
+		}
+	]
+}
