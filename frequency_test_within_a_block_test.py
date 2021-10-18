@@ -15,7 +15,7 @@ n>=100, m>=20
 """
 
 import math
-import scipy.special as sc
+import scipy.special as ss
 
 
 def frequency_test_within_a_block_test(bits, m, a):
@@ -43,7 +43,7 @@ def frequency_test_within_a_block_test(bits, m, a):
     V = 4*m*sum([(v - 0.5)**2 for v in pi])
 
     # 计算P-value
-    p_value = sc.gammaincc((N/2),(V/2))
+    p_value = ss.gammaincc((N/2),(V/2))
 
     return [n, m, N, V, a, p_value, p_value>=a]
 

@@ -26,6 +26,6 @@ def file_to_bytes(fname):
     return bytestr
 
 if __name__ == "__main__":
-    bs = file_to_bytes("./1.bin")
-    bits = bytes_to_base2string(bs)
+    bs = file_to_bytes("./data/data.sha1")
+    bits = bytes_to_base2string(bs)[0:1000]
     print(bits)

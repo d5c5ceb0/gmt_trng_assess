@@ -16,7 +16,7 @@ m < floor(log_{2}^n)-2
 """
 
 import math
-import scipy.special as sc
+import scipy.special as ss
 
 def serial_test(bits, m, a):
     """
@@ -53,8 +53,8 @@ def serial_test(bits, m, a):
     delta2 = psis[0] - 2 * psis[1] + psis[2]
 
     # 计算P-value1, P-value2
-    p_value1 = sc.gammaincc(2**(m-2), delta1/2)
-    p_value2 = sc.gammaincc(2**(m-3), delta2/2)
+    p_value1 = ss.gammaincc(2**(m-2), delta1/2)
+    p_value2 = ss.gammaincc(2**(m-3), delta2/2)
 
     return [n, m, delta1, delta2, a, p_value1, p_value2, (p_value1>a)and(p_value2>a)]
 

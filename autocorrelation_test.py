@@ -15,7 +15,6 @@ d = 1,2,8
 """
 
 import math
-import scipy.special as sc
 
 def autocorrelation_test(bits, d, a):
     """

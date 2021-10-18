@@ -2,7 +2,6 @@
 # -*- coding=utf-8 -*-
 
 import math
-import scipy.special as sc
 
 """
 二元推导检测
